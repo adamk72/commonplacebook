@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "stivo.tailwind-fold",
+    "streetsidesoftware.code-spell-checker",
+    "rodrigovallades.es7-react-js-snippets",
+    "dsznajder.es7-react-js-snippets",
+    "quicktype.quicktype",
+    "alduncanson.react-hooks-snippets",
+    "planbcoding.vscode-react-refactor"
+  ]
+}
