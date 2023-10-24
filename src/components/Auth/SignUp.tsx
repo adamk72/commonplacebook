@@ -1,33 +1,29 @@
 "use client"
-import { FormEvent } from "react"
-// import { useForm } from 'react-hook-form';
-// import { zodResolver } from "@hookform/resolvers/zod";
-// import { ZodType, z } from 'zod';
+import { FormEvent, useRef } from "react"
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ZodType, z } from 'zod';
 
 import Button from "../Button"
 import LabelAndField from "./LabelAndField"
 import LabelLink from "./LabelLink"
 
-// type SignUpIn = {
-//   email: string,
-//   password: string,
-// }
-// const schema: ZodType<SignUpIn> = z.object({
-//   email: z.string().email().trim(),
-//   password: z.string().
-// })
+export type SignUpIn = {
+  email: string,
+  password: string,
+  confirm: string,
+}
+const schema: ZodType<SignUpIn> = z.object({
+  email: z.string().email().trim(),
+  password: z.string().min(4).max(30),
+  confirm: z.string(),
+}).refine((data) => data.password === data.confirm, { message: "Passwords do not match", path: ["confirm"] })
 
 export const SignUp = () => {
-  //   const { register, handleSubmit } = useForm({resolver: zodResolver(schema)});
+  const { register, handleSubmit, formState: { errors: fErrors } } = useForm<SignUpIn>({ resolver: zodResolver(schema) });
 
-  const handleValidatedInput = (event: FormEvent) => {
-    event.preventDefault()
-    console.log(event)
+  const handleValidatedInput: SubmitHandler<SignUpIn> = async (data) => {
   }
-
-  //  const onErrors = (errors) => {
-
-  //  }
 
   return (
     <div className="flex items-center bg-white dark:bg-gray-900">
@@ -42,21 +38,31 @@ export const SignUp = () => {
             </p>
           </div>
           <div className="m-7">
-            <form onSubmit={handleValidatedInput}>
+            <form onSubmit={handleSubmit(handleValidatedInput)}>
               <LabelAndField
-                name="email"
-                id="email"
-                placeholder="you@company.com"
-                type="email"
+                errors={fErrors}
                 label="Email Address"
+                name="email"
+                placeholder="you@company.com"
+                register={register}
+                type="email"
               />
               <LabelAndField
-                name="password"
-                id="password"
-                type="password"
-                placeholder="Your Password"
+                errors={fErrors}
                 label="Password"
                 labelLink={<LabelLink text="Forgot password?" href="#!" />}
+                name="password"
+                placeholder="Your Password"
+                register={register}
+                type="password"
+              />
+              <LabelAndField
+                errors={fErrors}
+                label="Confirm Password"
+                name="confirm"
+                placeholder="Your Password"
+                register={register}
+                type="password"
               />
               <Button type="submit" label="Sign in" />
               <p className="text-sm text-center text-gray-400">

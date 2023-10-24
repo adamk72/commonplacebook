@@ -1,16 +1,20 @@
 import React, { ReactElement } from "react"
+import { FieldErrors, RegisterOptions, UseFormRegister } from 'react-hook-form'
+import { SignUpIn } from './SignUp'
 
 type LabelAndFieldProps = {
   placeholder?: string
   type: string
-  name?: string
+  name: keyof SignUpIn
   id?: string
   label: string
   labelLink?: ReactElement
+  errors?: FieldErrors<SignUpIn>
+  register: UseFormRegister<SignUpIn>
 }
 
 const LabelAndField = (props: LabelAndFieldProps) => {
-  const { placeholder, type, name, id, label, labelLink } = props
+  const { placeholder, type, name, id, label, labelLink, errors, register } = props
   return (
     <div className="mb-6">
       <div className="flex justify-between mb-2">
@@ -24,11 +28,12 @@ const LabelAndField = (props: LabelAndFieldProps) => {
       </div>
       <input
         type={type}
-        name={name}
         id={id}
+        {...register(name)}
         placeholder={placeholder}
         className="w-full px-3 py-2 placeholder-gray-300 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300 dark:bg-gray-700 dark:text-white dark:placeholder-gray-500 dark:border-gray-600 dark:focus:ring-gray-900 dark:focus:border-gray-500"
       />
+      {errors && errors[name] && <span className="text-red-900">{errors[name]?.message}</span>}
     </div>
   )
 }
