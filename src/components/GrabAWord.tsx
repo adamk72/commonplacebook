@@ -26,7 +26,7 @@ export const GrabAWord = () => {
     formState: { errors: formErrors },
   } = useForm<JustWord>({ resolver: zr(schema) })
 
-  const handleValidatedData: SubmitHandler<JustWord> = async (data) => {
+  const handleValidatedInput: SubmitHandler<JustWord> = async (data) => {
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${data.word}`
     try {
       const words: Word[] = await ky.get(url).json()
@@ -44,7 +44,7 @@ export const GrabAWord = () => {
       <h1>GrabAWord</h1>
       <form
         className="flex flex-col"
-        onSubmit={handleSubmit(handleValidatedData)}
+        onSubmit={handleSubmit(handleValidatedInput)}
       >
         <label>What word should I grab?</label>
         <input type="text" {...register("word")} />
