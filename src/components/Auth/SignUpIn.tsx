@@ -9,12 +9,13 @@ import { appConfig } from "@/lib/config"
 import Button from "../Button"
 import LabelAndField from "./LabelAndField"
 import LabelLink from "./LabelLink"
-import FormSurface from "../FormSurface"
+import FormSurfaceWithTitle from "../FormSurface"
 import {
   signUpInReducer,
   signUpInReducerDefault,
 } from "@/lib/reducers/signUpIn"
 import ky, { HTTPError } from 'ky'
+import jwtDecode from 'jwt-decode'
 
 export type SignUpIn = {
   email: string
@@ -32,7 +33,7 @@ const schema: ZodType<SignUpIn> = z
     path: ["confirm"],
   })
 
-export const SignUp = () => {
+export const SignUpIn = () => {
   const [state, dispatch] = useReducer(signUpInReducer, signUpInReducerDefault)
   const {
     register,
@@ -51,7 +52,6 @@ export const SignUp = () => {
         console.error(await error.response.json())
       } 
     }
-    console.log(appConfig.apiURL+"/api/auth/local/register", data)
   }
 
   const stateConfig = {
@@ -60,7 +60,7 @@ export const SignUp = () => {
   }
 
   return (
-    <FormSurface title={stateConfig[state.mode].title} subtitle={stateConfig[state.mode].subtitle}>
+    <FormSurfaceWithTitle title={stateConfig[state.mode].title} subtitle={stateConfig[state.mode].subtitle}>
       <>
         <form onSubmit={handleSubmit(handleValidatedInput)}>
           <LabelAndField
@@ -103,6 +103,6 @@ export const SignUp = () => {
           .
         </p>
       </>
-    </FormSurface>
+    </FormSurfaceWithTitle>
   )
 }

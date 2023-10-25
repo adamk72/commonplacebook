@@ -1,6 +1,6 @@
 import { ReactElement } from "react"
 
-const FormSurface = ({
+const FormSurfaceWithTitle = ({
   title,
   subtitle,
   children,
@@ -26,4 +26,4 @@ const FormSurface = ({
   )
 }
 
-export default FormSurface
+export default FormSurfaceWithTitle

@@ -1,6 +1,6 @@
 import React, { ReactElement } from "react"
 import { FieldErrors, RegisterOptions, UseFormRegister } from "react-hook-form"
-import { SignUpIn } from "./SignUp"
+import { SignUpIn } from "./SignUpIn"
 
 type LabelAndFieldProps = {
   placeholder?: string
