@@ -1,6 +1,7 @@
 import { defineConfig } from "../defineConfig"
+import { defaultConfig } from "./local";
 export function createProdConfig() {
   return defineConfig({
-    apiURL: "https://api.mydomain.com", // TBD
+    ...defaultConfig, apiURL: "https://api.mydomain.com", // TBD
   })
 }
