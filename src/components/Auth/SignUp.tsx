@@ -54,8 +54,13 @@ export const SignUp = () => {
     console.log(appConfig.apiURL+"/api/auth/local/register", data)
   }
 
+  const stateConfig = {
+    "signIn": { title: "Sign In", subtitle: "Sign in to access your account", labelLink: <LabelLink text="Forgot password?" href="#!" />, toggleText: "Don't have an account yet?", toggleLink: "Sign up" },
+    "signUp": { title: "Sign Up", subtitle: "Sign up with your email", labelLink: <></>, toggleText: "Did you mean to sign in?", toggleLink: "Sign in"}
+  }
+
   return (
-    <FormSurface title="Sign in" subtitle="Sign in to access your account">
+    <FormSurface title={stateConfig[state.mode].title} subtitle={stateConfig[state.mode].subtitle}>
       <>
         <form onSubmit={handleSubmit(handleValidatedInput)}>
           <LabelAndField
@@ -69,31 +74,31 @@ export const SignUp = () => {
           <LabelAndField
             errors={fErrors}
             label="Password"
-            labelLink={<LabelLink text="Forgot password?" href="#!" />}
+            labelLink={stateConfig[state.mode].labelLink}
             name="password"
             placeholder="Your Password"
             register={register}
             type="password"
           />
-          <LabelAndField
+          {state.mode === "signUp" && <LabelAndField
             errors={fErrors}
             label="Confirm Password"
             name="confirm"
             placeholder="Your Password"
             register={register}
             type="password"
-          />
-          <Button type="submit" label="Sign in" />
+          />}
+          <Button type="submit" label={stateConfig[state.mode].title} />
         </form>
         <p className="text-sm text-center text-gray-400">
-          Don&#x27;t have an account yet?{" "}
+        {stateConfig[state.mode].toggleText}{" "} 
           <a
             className="text-indigo-400 focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800"
             onClick={() => {
               dispatch({ type: "toggle" })
             }}
           >
-            Sign up
+            {stateConfig[state.mode].toggleLink}
           </a>
           .
         </p>
