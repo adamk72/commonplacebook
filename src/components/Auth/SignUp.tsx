@@ -41,6 +41,7 @@ export const SignUp = () => {
 
   const handleValidatedInput: SubmitHandler<SignUpIn> = async (data) => {
     dispatch({ type: "loading" })
+    console.log(appConfig.apiURL)
   }
 
   return (
