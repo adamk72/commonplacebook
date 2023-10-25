@@ -20,8 +20,10 @@ export const signUpInReducer = (
   action: SignUpInAction
 ) => {
   switch (action.type) {
+    case "success":
+      return { ...state, loading: false }
     case "loading":
-      return { ...state }
+      return { ...state, loading: true }
     case "toggle":
       const mode: Mode = state.mode === "signIn" ? "signUp" : "signIn"
       return { ...state, mode }

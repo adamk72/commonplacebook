@@ -14,6 +14,7 @@ import {
   signUpInReducer,
   signUpInReducerDefault,
 } from "@/lib/reducers/signUpIn"
+import ky, { HTTPError } from 'ky'
 
 export type SignUpIn = {
   email: string
@@ -23,7 +24,7 @@ export type SignUpIn = {
 const schema: ZodType<SignUpIn> = z
   .object({
     email: z.string().email().trim(),
-    password: z.string().min(4).max(30),
+    password: z.string().min(appConfig.strapi.passwordMinLength),
     confirm: z.string(),
   })
   .refine((data) => data.password === data.confirm, {
@@ -41,7 +42,16 @@ export const SignUp = () => {
 
   const handleValidatedInput: SubmitHandler<SignUpIn> = async (data) => {
     dispatch({ type: "loading" })
-    console.log(appConfig.apiURL)
+    const { email, password } = data
+    try {
+      const res = await ky.post(appConfig.apiURL+"/api/auth/local/register", { json: { username: email, email, password}}).json()
+      dispatch({ type: "success"})
+    } catch (error) {
+      if (error instanceof HTTPError && error.name === "HTTPError") {
+        console.error(await error.response.json())
+      } 
+    }
+    console.log(appConfig.apiURL+"/api/auth/local/register", data)
   }
 
   return (
