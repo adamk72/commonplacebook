@@ -1,6 +1,14 @@
-import { ReactElement } from 'react'
+import { ReactElement } from "react"
 
-const FormSurface = ({ title, subtitle, children }: { title: string, subtitle: string, children: ReactElement }) => {
+const FormSurface = ({
+  title,
+  subtitle,
+  children,
+}: {
+  title: string
+  subtitle: string
+  children: ReactElement
+}) => {
   return (
     <div className="flex items-center bg-white dark:bg-gray-900">
       <div className="container mx-auto">
@@ -9,13 +17,9 @@ const FormSurface = ({ title, subtitle, children }: { title: string, subtitle: s
             <h1 className="my-3 text-3xl font-semibold text-gray-700 dark:text-gray-200">
               {title}
             </h1>
-            <p className="text-gray-500 dark:text-gray-400">
-              {subtitle}
-            </p>
+            <p className="text-gray-500 dark:text-gray-400">{subtitle}</p>
           </div>
-          <div className="m-7">
-            {children}
-          </div>
+          <div className="m-7">{children}</div>
         </div>
       </div>
     </div>
