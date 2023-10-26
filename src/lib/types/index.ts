@@ -1,3 +1,5 @@
+import { Dispatch } from "react"
+
 export type StrapiRegisteredUser = {
   blocked: boolean
   confirmed: boolean
@@ -7,4 +9,9 @@ export type StrapiRegisteredUser = {
   provider: string
   updatedAt: Date
   username: string
+}
+
+export type DispatchProps<A, S> = {
+  dispatch: Dispatch<A>
+  state: S
 }

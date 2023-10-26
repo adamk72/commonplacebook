@@ -1,14 +1,13 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import jwtDecode, { JwtPayload } from "jwt-decode"
 import ky, { HTTPError } from "ky"
-import React, { Dispatch } from "react"
 import { useCookies } from "react-cookie"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 import { appConfig } from "@/lib/config"
 import { JWT_AUTH_NAME, MILLISECONDS_IN_SECOND } from "@/lib/constants"
 import { SignUpInAction, SignUpInState } from "@/lib/reducers/signUpInReducer"
-import { StrapiRegisteredUser } from "@/lib/types"
+import { DispatchProps, StrapiRegisteredUser } from "@/lib/types"
 
 import LabelAndField from "./LabelAndField"
 import { SignUpIn, stateConfig } from "./SignUpIn"
@@ -17,10 +16,7 @@ import Button from "../Button"
 const SignUpInForm = ({
   dispatch,
   state,
-}: {
-  dispatch: Dispatch<SignUpInAction>
-  state: SignUpInState
-}) => {
+}: DispatchProps<SignUpInAction, SignUpInState>) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_cookies, setCookie] = useCookies([JWT_AUTH_NAME])
 

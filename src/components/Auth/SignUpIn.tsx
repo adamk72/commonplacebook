@@ -9,7 +9,7 @@ import {
 import LabelLink from "./LabelLink"
 import { signInSchema, signUpSchema } from "./schema"
 import SignUpInForm from "./SignUpInForm"
-import ToggleClause from "./SwitchClause"
+import ToggleClause from "./ToggleClause"
 import FormSurfaceWithTitle from "../FormSurface"
 
 export type SignUpIn = {

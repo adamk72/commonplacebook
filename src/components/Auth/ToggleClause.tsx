@@ -1,16 +1,12 @@
-import { Dispatch } from "react"
-
 import { SignUpInAction, SignUpInState } from "@/lib/reducers/signUpInReducer"
+import { DispatchProps } from "@/lib/types"
 
 import { stateConfig } from "./SignUpIn"
 
 const ToggleClause = ({
   dispatch,
   state,
-}: {
-  dispatch: Dispatch<SignUpInAction>
-  state: SignUpInState
-}) => {
+}: DispatchProps<SignUpInAction, SignUpInState>) => {
   return (
     <p className="text-sm text-center text-gray-400">
       {stateConfig[state.mode].toggleText}{" "}
