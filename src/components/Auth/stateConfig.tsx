@@ -14,7 +14,7 @@ export const stateConfig = {
       identifier: email,
       password,
     }),
-    schema: signUpSchema,
+    schema: signInSchema,
   },
   signUp: {
     title: "Sign Up",
@@ -28,6 +28,6 @@ export const stateConfig = {
       email,
       password,
     }),
-    schema: signInSchema,
+    schema: signUpSchema,
   },
 }
