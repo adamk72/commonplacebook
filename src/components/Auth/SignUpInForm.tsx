@@ -10,7 +10,8 @@ import { SignUpInAction, SignUpInState } from "@/lib/reducers/signUpInReducer"
 import { DispatchProps, StrapiRegisteredUser } from "@/lib/types"
 
 import LabelAndField from "./LabelAndField"
-import { SignUpIn, stateConfig } from "./SignUpIn"
+import { SignUpIn } from "./SignUpIn"
+import { stateConfig } from "./stateConfig"
 import Button from "../Button"
 
 const SignUpInForm = ({
