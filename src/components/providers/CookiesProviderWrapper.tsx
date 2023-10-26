@@ -1,11 +1,9 @@
 "use client"
 import { CookiesProvider } from "react-cookie"
 
-const CookiesProviderWrapper = ({
-  children,
-}: {
-  children: React.ReactNode
-}) => {
+import { ReactChildren } from "@/lib/types"
+
+const CookiesProviderWrapper = ({ children }: ReactChildren) => {
   return <CookiesProvider>{children}</CookiesProvider>
 }
 

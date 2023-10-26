@@ -1,4 +1,4 @@
-import { Dispatch } from "react"
+import { Dispatch, ReactNode } from "react"
 
 export type StrapiRegisteredUser = {
   blocked: boolean
@@ -15,3 +15,5 @@ export type DispatchProps<A, S> = {
   dispatch: Dispatch<A>
   state: S
 }
+
+export type ReactChildren = { children: ReactNode }
