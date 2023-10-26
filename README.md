@@ -8,6 +8,9 @@ This requires [https://github.com/adamk72/commonplacebook-strapi](https://github
 Using middleware for authentication. Currently, the app will redirect non-logged in users (i.e., users who don't have a JWT cookie) back to the home page
 
 ## TODOs
+
+- automate `prettier` and `lint:fix` on commit
+- pull `SignUpIn` out into it's own library, since it's such a common pattern
 - Use refresh token system instead of directly storing the JWT in a cookie.
 
 # ORIGINAL README

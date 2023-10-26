@@ -9,6 +9,7 @@ import {
 import LabelLink from "./LabelLink"
 import { signInSchema, signUpSchema } from "./schema"
 import SignUpInForm from "./SignUpInForm"
+import ToggleClause from "./SwitchClause"
 import FormSurfaceWithTitle from "../FormSurface"
 
 export type SignUpIn = {
@@ -59,18 +60,7 @@ export const SignUpIn = () => {
       >
         <>
           <SignUpInForm state={state} dispatch={dispatch} />
-          <p className="text-sm text-center text-gray-400">
-            {stateConfig[state.mode].toggleText}{" "}
-            <a
-              className="text-indigo-400 focus:outline-none focus:underline focus:text-indigo-500 dark:focus:border-indigo-800"
-              onClick={() => {
-                dispatch({ type: "toggle" })
-              }}
-            >
-              {stateConfig[state.mode].toggleLink}
-            </a>
-            .
-          </p>
+          <ToggleClause state={state} dispatch={dispatch} />
         </>
       </FormSurfaceWithTitle>
     </>
