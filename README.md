@@ -1,5 +1,9 @@
 # Notes
 
+## Strapi
+
+This requires [https://github.com/adamk72/commonplacebook-strapi](https://github.com/adamk72/commonplacebook-strapi) to work. Right now, the CMS works off of a local Postgres DB. 
+
 ## Middleware
 Using middleware for authentication. Currently, the app will redirect non-logged in users (i.e., users who don't have a JWT cookie) back to the home page
 

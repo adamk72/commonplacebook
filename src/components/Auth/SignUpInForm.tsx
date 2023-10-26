@@ -7,11 +7,10 @@ import { SubmitHandler, useForm } from "react-hook-form"
 
 import { appConfig } from "@/lib/config"
 import { JWT_AUTH_NAME, MILLISECONDS_IN_SECOND } from "@/lib/constants"
-import { SignUpInAction, SignUpInState } from "@/lib/reducers/signUpIn"
+import { SignUpInAction, SignUpInState } from "@/lib/reducers/signUpInReducer"
 import { StrapiRegisteredUser } from "@/lib/types"
 
 import LabelAndField from "./LabelAndField"
-import { schema } from "./schema"
 import { SignUpIn, stateConfig } from "./SignUpIn"
 import Button from "../Button"
 
@@ -29,15 +28,17 @@ const SignUpInForm = ({
     register,
     handleSubmit,
     formState: { errors: fErrors },
-  } = useForm<SignUpIn>({ resolver: zodResolver(schema) })
+  } = useForm<SignUpIn>({
+    resolver: zodResolver(stateConfig[state.mode].schema),
+  })
 
   const handleValidatedInput: SubmitHandler<SignUpIn> = async (data) => {
     dispatch({ type: "loading" })
     const { email, password } = data
     try {
       const { jwt } = (await ky
-        .post(appConfig.apiURL + "/api/auth/local/register", {
-          json: { username: email, email, password },
+        .post(appConfig.apiURL + stateConfig[state.mode].authPath, {
+          json: stateConfig[state.mode].authJson(email, password),
         })
         .json()) as { jwt: string; user: StrapiRegisteredUser }
       const decoded: JwtPayload = jwtDecode(jwt)
