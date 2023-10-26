@@ -7,6 +7,8 @@ import { ZodType, z } from "zod"
 
 import { Word } from "@/data/word"
 
+import Button from "./Button"
+
 type JustWord = Partial<Word>
 
 export const GrabAWord = () => {
@@ -52,7 +54,7 @@ export const GrabAWord = () => {
         {formErrors.word && (
           <span className="text-red-900">{formErrors.word.message}</span>
         )}
-        <input type="submit" className="btn btn-primary" />
+        <Button type="submit" label="Submit" />
       </form>
       {word ? (
         <>
