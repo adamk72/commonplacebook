@@ -10,3 +10,7 @@ export const MILLISECONDS_IN_MONTH =
   SECONDS_IN_MINUTE *
   MILLISECONDS_IN_SECOND
 export const JWT_AUTH_NAME = "jwt_authentication"
+
+export const QUERY_KEY = {
+  user: "user",
+} as const
