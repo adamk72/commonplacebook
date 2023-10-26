@@ -1,3 +1,12 @@
+# Notes
+
+## Middleware
+Using middleware for authentication. Currently, the app will redirect non-logged in users (i.e., users who don't have a JWT cookie) back to the home page
+
+## TODOs
+- Use refresh token system instead of directly storing the JWT in a cookie.
+
+# ORIGINAL README
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
