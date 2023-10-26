@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react"
-import { FieldErrors, RegisterOptions, UseFormRegister } from "react-hook-form"
+import { FieldErrors, UseFormRegister } from "react-hook-form"
+
 import { SignUpIn } from "./SignUpIn"
 
 type LabelAndFieldProps = {

@@ -1,5 +1,6 @@
-import { Word } from "@/data/word"
 import { promises as fs } from "fs"
+
+import { Word } from "@/data/word"
 
 export default async function Words() {
   const file = await fs.readFile(process.cwd() + "/src/data/words.json", "utf8")

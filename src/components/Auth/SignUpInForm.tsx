@@ -1,17 +1,19 @@
-import React, { Dispatch } from "react"
-import { SubmitHandler, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { appConfig } from "@/lib/config"
-import Button from "../Button"
-import LabelAndField from "./LabelAndField"
-import ky, { HTTPError } from "ky"
 import jwtDecode, { JwtPayload } from "jwt-decode"
-import { StrapiRegisteredUser } from "@/lib/types"
-import { schema } from "./schema"
-import { JWT_AUTH_NAME, MILLISECONDS_IN_SECOND } from "@/lib/constants"
+import ky, { HTTPError } from "ky"
+import React, { Dispatch } from "react"
 import { useCookies } from "react-cookie"
-import { SignUpIn, stateConfig } from "./SignUpIn"
+import { SubmitHandler, useForm } from "react-hook-form"
+
+import { appConfig } from "@/lib/config"
+import { JWT_AUTH_NAME, MILLISECONDS_IN_SECOND } from "@/lib/constants"
 import { SignUpInAction, SignUpInState } from "@/lib/reducers/signUpIn"
+import { StrapiRegisteredUser } from "@/lib/types"
+
+import LabelAndField from "./LabelAndField"
+import { schema } from "./schema"
+import { SignUpIn, stateConfig } from "./SignUpIn"
+import Button from "../Button"
 
 const SignUpInForm = ({
   dispatch,
@@ -20,6 +22,7 @@ const SignUpInForm = ({
   dispatch: Dispatch<SignUpInAction>
   state: SignUpInState
 }) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [_cookies, setCookie] = useCookies([JWT_AUTH_NAME])
 
   const {

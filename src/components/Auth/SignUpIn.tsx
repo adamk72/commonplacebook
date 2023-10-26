@@ -1,13 +1,14 @@
 "use client"
 import { useReducer } from "react"
-import LabelLink from "./LabelLink"
-import FormSurfaceWithTitle from "../FormSurface"
+
 import {
   signUpInReducer,
   signUpInReducerDefault,
 } from "@/lib/reducers/signUpIn"
 
+import LabelLink from "./LabelLink"
 import SignUpInForm from "./SignUpInForm"
+import FormSurfaceWithTitle from "../FormSurface"
 
 export type SignUpIn = {
   email: string

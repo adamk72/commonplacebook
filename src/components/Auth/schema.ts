@@ -1,6 +1,8 @@
 import { ZodType, z } from "zod"
-import { SignUpIn } from "./SignUpIn"
+
 import { appConfig } from "@/lib/config"
+
+import { SignUpIn } from "./SignUpIn"
 
 export const schema: ZodType<SignUpIn> = z
   .object({

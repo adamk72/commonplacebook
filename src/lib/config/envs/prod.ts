@@ -1,5 +1,5 @@
-import { defineConfig } from "../defineConfig"
 import { defaultConfig } from "./local"
+import { defineConfig } from "../defineConfig"
 export function createProdConfig() {
   return defineConfig({
     ...defaultConfig,
