@@ -1,14 +1,15 @@
-export type SignUpInAction = {
-  type: "loading" | "success" | "toggle"
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  payload?: any
-}
+export type SignUpInAction =
+  | { type: "loading" }
+  | { type: "success" }
+  | { type: "toggle" }
+  | { type: "error"; message: string }
 
 type Mode = "signUp" | "signIn"
 
 export type SignUpInState = {
   loading: boolean
   mode: Mode
+  errorMessage?: string
 }
 
 export const signUpInReducerDefault: SignUpInState = {
@@ -29,6 +30,8 @@ export const signUpInReducer = (
       const mode: Mode = state.mode === "signIn" ? "signUp" : "signIn"
       return { ...state, mode }
     }
+    case "error":
+      return { ...state, errorMessage: action.message }
     default:
       throw Error("Unknown action.")
   }

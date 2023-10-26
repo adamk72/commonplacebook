@@ -22,12 +22,12 @@ export const SignUpIn = () => {
 
   return (
     <>
-      <span>Current State: {stateConfig[state.mode].title}</span>
       <FormSurfaceWithTitle
         title={stateConfig[state.mode].title}
         subtitle={stateConfig[state.mode].subtitle}
       >
         <>
+          <span className="text-red-600">{state?.errorMessage}</span>
           <SignUpInForm state={state} dispatch={dispatch} />
           <ToggleClause state={state} dispatch={dispatch} />
         </>

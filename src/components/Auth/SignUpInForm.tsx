@@ -49,7 +49,8 @@ const SignUpInForm = ({
       dispatch({ type: "success" })
     } catch (error) {
       if (error instanceof HTTPError && error.name === "HTTPError") {
-        console.error(await error.response.json())
+        const res = await error.response.json()
+        dispatch({ type: "error", message: res.error.message })
       }
     }
   }
