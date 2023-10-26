@@ -38,6 +38,7 @@ export const useSignUpInQuery = () => {
   const {
     data: signUpInResponse,
     isSuccess: signUpInSuccessful,
+    failureReason: signUpInFailure,
     mutate: userSignUpIn,
     error: userSignUpInError,
   } = useMutation({
@@ -52,5 +53,6 @@ export const useSignUpInQuery = () => {
     userSignUpIn,
     signUpInSuccessful,
     userSignUpInError,
+    signUpInFailure,
   }
 }

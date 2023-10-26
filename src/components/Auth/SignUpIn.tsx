@@ -4,7 +4,7 @@ import { useReducer } from "react"
 import {
   signUpInReducer,
   signUpInReducerDefault,
-} from "@/lib/reducers/signUpInReducer"
+} from "@/components/Auth/signUpInReducer"
 
 import SignUpInForm from "./SignUpInForm"
 import { stateConfig } from "./stateConfig"
@@ -27,7 +27,7 @@ export const SignUpIn = () => {
         subtitle={stateConfig[state.mode].subtitle}
       >
         <>
-          <span className="text-red-600">{state?.errorMessage}</span>
+          {state.statusNode}
           <SignUpInForm state={state} dispatch={dispatch} />
           <ToggleClause state={state} dispatch={dispatch} />
         </>

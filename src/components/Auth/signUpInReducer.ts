@@ -1,15 +1,17 @@
+import { ReactNode } from "react"
+
 export type SignUpInAction =
-  | { type: "loading" }
+  | { type: "loading"; node: ReactNode }
   | { type: "success" }
   | { type: "toggle" }
-  | { type: "error"; message: string }
+  | { type: "error"; node: ReactNode }
 
 type Mode = "signUp" | "signIn"
 
 export type SignUpInState = {
   loading: boolean
   mode: Mode
-  errorMessage?: string
+  statusNode?: ReactNode
 }
 
 export const signUpInReducerDefault: SignUpInState = {
@@ -25,13 +27,13 @@ export const signUpInReducer = (
     case "success":
       return { ...state, loading: false }
     case "loading":
-      return { ...state, loading: true }
+      return { ...state, statusNode: action.node, loading: true }
     case "toggle": {
       const mode: Mode = state.mode === "signIn" ? "signUp" : "signIn"
       return { ...state, mode }
     }
     case "error":
-      return { ...state, errorMessage: action.message }
+      return { ...state, statusNode: action.node, loading: false }
     default:
       throw Error("Unknown action.")
   }

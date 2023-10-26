@@ -1,4 +1,7 @@
-import { SignUpInAction, SignUpInState } from "@/lib/reducers/signUpInReducer"
+import {
+  SignUpInAction,
+  SignUpInState,
+} from "@/components/Auth/signUpInReducer"
 import { DispatchProps } from "@/lib/types"
 
 import { stateConfig } from "./stateConfig"

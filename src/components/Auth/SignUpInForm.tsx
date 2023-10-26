@@ -1,11 +1,16 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import jwtDecode, { JwtPayload } from "jwt-decode"
+import { useRouter } from "next/navigation"
+import { useEffect } from "react"
 import { useCookies } from "react-cookie"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 import { useSignUpInQuery } from "@/app/hooks/useSignUpInQuery"
+import {
+  SignUpInAction,
+  SignUpInState,
+} from "@/components/Auth/signUpInReducer"
 import { JWT_AUTH_NAME, MILLISECONDS_IN_SECOND } from "@/lib/constants"
-import { SignUpInAction, SignUpInState } from "@/lib/reducers/signUpInReducer"
 import { DispatchProps } from "@/lib/types"
 
 import LabelAndField from "./LabelAndField"
@@ -23,7 +28,9 @@ const SignUpInForm = ({
     userSignUpIn,
     signUpInSuccessful,
     userSignUpInError,
+    signUpInFailure,
   } = useSignUpInQuery()
+  const router = useRouter()
 
   const {
     register,
@@ -33,13 +40,15 @@ const SignUpInForm = ({
     resolver: zodResolver(stateConfig[state.mode].schema),
   })
 
-  const handleValidatedInput: SubmitHandler<SignUpIn> = async (data) => {
-    dispatch({ type: "loading" })
-    const { email, password } = data
-    userSignUpIn({
-      path: stateConfig[state.mode].authPath,
-      json: stateConfig[state.mode].authJson(email, password),
-    })
+  useEffect(() => {
+    if (signUpInFailure)
+      dispatch({
+        type: "error",
+        node: <span className="text-red-600">{signUpInFailure.message}</span>,
+      })
+  }, [dispatch, signUpInFailure])
+
+  useEffect(() => {
     if (signUpInSuccessful) {
       const jwt = signUpInResponse!.jwt
       const decoded: JwtPayload = jwtDecode(jwt)
@@ -51,9 +60,32 @@ const SignUpInForm = ({
       else setCookie(JWT_AUTH_NAME, jwt)
 
       dispatch({ type: "success" })
+      router.push("/about")
     } else if (userSignUpInError) {
-      dispatch({ type: "error", message: userSignUpInError.message })
+      dispatch({
+        type: "error",
+        node: <span className="text-red-600">{userSignUpInError.message}</span>,
+      })
     }
+  }, [
+    dispatch,
+    router,
+    setCookie,
+    signUpInResponse,
+    signUpInSuccessful,
+    userSignUpInError,
+  ])
+
+  const handleValidatedInput: SubmitHandler<SignUpIn> = async (data) => {
+    dispatch({
+      type: "loading",
+      node: <span className="text-green-600">Loading...</span>,
+    })
+    const { email, password } = data
+    userSignUpIn({
+      path: stateConfig[state.mode].authPath,
+      json: stateConfig[state.mode].authJson(email, password),
+    })
   }
 
   return (
