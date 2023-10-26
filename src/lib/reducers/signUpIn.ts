@@ -5,7 +5,7 @@ export type SignUpInAction = {
 
 type Mode = "signUp" | "signIn"
 
-type SignUpInState = {
+export type SignUpInState = {
   loading: boolean
   mode: Mode
 }
