@@ -1,7 +1,11 @@
+"use client"
 import React from "react"
 
-const page = () => {
+import { useUserAuth } from "../hooks/useUserAuth"
+
+const AboutPage = () => {
+  const data = useUserAuth()
   return <div>Welcome</div>
 }
 
-export default page
+export default AboutPage
