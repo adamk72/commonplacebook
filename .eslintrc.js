@@ -15,6 +15,7 @@ module.exports = {
     "plugin:prettier/recommended",
   ],
   rules: {
+    "@typescript-eslint/no-unused-vars": "off",
     "sort-imports": [
       "error",
       {
