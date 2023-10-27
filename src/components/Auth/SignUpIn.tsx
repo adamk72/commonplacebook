@@ -2,6 +2,7 @@
 import { SnackbarProvider } from "notistack"
 import { useReducer } from "react"
 
+import { useUserAuth } from "@/app/hooks/useUserAuth"
 import {
   signUpInReducer,
   signUpInReducerDefault,
@@ -20,6 +21,9 @@ export type SignUpIn = {
 
 export const SignUpIn = () => {
   const [state, dispatch] = useReducer(signUpInReducer, signUpInReducerDefault)
+  const user = useUserAuth()
+
+  if (user && user.jwt) return <></>
 
   return (
     <SnackbarProvider maxSnack={1}>

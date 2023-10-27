@@ -3,7 +3,8 @@ import ky, { HTTPError } from "ky"
 
 import { appConfig } from "@/lib/config"
 import { QUERY_KEY } from "@/lib/constants"
-import { StrapiRegisteredUser } from "@/lib/types"
+
+import { User } from "./useUserAuth"
 
 type SignUpInQuery = {
   path: string
@@ -22,7 +23,7 @@ const signUpInFetch = async ({ path, json }: SignUpInQuery) => {
   try {
     const { jwt, user } = (await ky
       .post(appConfig.apiURL + path, { json })
-      .json()) as { jwt: string; user: StrapiRegisteredUser }
+      .json()) as User
     return { jwt, user }
   } catch (error) {
     if (error instanceof HTTPError && error.name === "HTTPError") {
