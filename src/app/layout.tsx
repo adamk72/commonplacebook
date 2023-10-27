@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
 import "./globals.css"
+import Navbar from "@/components/navbar/navbar"
 import QueryClientProviderWrapper from "@/components/providers/QueryClientProviderWrapper"
 
 import CookiesProviderWrapper from "../components/providers/CookiesProviderWrapper"
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <QueryClientProviderWrapper>
+          <Navbar></Navbar>
           <CookiesProviderWrapper>{children}</CookiesProviderWrapper>
         </QueryClientProviderWrapper>
       </body>
