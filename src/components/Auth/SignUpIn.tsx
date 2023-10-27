@@ -1,4 +1,5 @@
 "use client"
+import { SnackbarProvider } from "notistack"
 import { useReducer } from "react"
 
 import {
@@ -21,17 +22,16 @@ export const SignUpIn = () => {
   const [state, dispatch] = useReducer(signUpInReducer, signUpInReducerDefault)
 
   return (
-    <>
+    <SnackbarProvider maxSnack={1}>
       <FormSurfaceWithTitle
         title={stateConfig[state.mode].title}
         subtitle={stateConfig[state.mode].subtitle}
       >
         <>
-          {state.statusNode}
           <SignUpInForm state={state} dispatch={dispatch} />
           <ToggleClause state={state} dispatch={dispatch} />
         </>
       </FormSurfaceWithTitle>
-    </>
+    </SnackbarProvider>
   )
 }

@@ -28,7 +28,6 @@ const SignUpInForm = ({
     userSignUpIn,
     signUpInSuccessful,
     userSignUpInError,
-    signUpInFailure,
   } = useSignUpInQuery()
   const router = useRouter()
 
@@ -39,14 +38,6 @@ const SignUpInForm = ({
   } = useForm<SignUpIn>({
     resolver: zodResolver(stateConfig[state.mode].schema),
   })
-
-  useEffect(() => {
-    if (signUpInFailure)
-      dispatch({
-        type: "error",
-        node: <span className="text-red-600">{signUpInFailure.message}</span>,
-      })
-  }, [dispatch, signUpInFailure])
 
   useEffect(() => {
     if (signUpInSuccessful) {
@@ -64,7 +55,7 @@ const SignUpInForm = ({
     } else if (userSignUpInError) {
       dispatch({
         type: "error",
-        node: <span className="text-red-600">{userSignUpInError.message}</span>,
+        message: userSignUpInError.message,
       })
     }
   }, [
@@ -79,7 +70,7 @@ const SignUpInForm = ({
   const handleValidatedInput: SubmitHandler<SignUpIn> = async (data) => {
     dispatch({
       type: "loading",
-      node: <span className="text-green-600">Loading...</span>,
+      message: "Loading...",
     })
     const { email, password } = data
     userSignUpIn({
