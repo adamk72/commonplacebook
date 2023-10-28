@@ -30,8 +30,9 @@ export const signUpInReducer = (
   action: SignUpInAction
 ) => {
   switch (action.type) {
-    case "success":
+    case "success": {
       return { ...state, loading: false }
+    }
     case "loading": {
       enqueueSnackbar(action.message, { variant: "default" })
       return { ...state, loading: true }

@@ -21,9 +21,9 @@ export type SignUpIn = {
 
 export const SignUpIn = () => {
   const [state, dispatch] = useReducer(signUpInReducer, signUpInReducerDefault)
-  const user = useUserAuth()
+  const { isError } = useUserAuth()
 
-  if (user && user.jwt) return <></>
+  if (!isError) return <></>
 
   return (
     <SnackbarProvider maxSnack={1}>

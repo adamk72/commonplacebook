@@ -1,8 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod"
-import jwtDecode, { JwtPayload } from "jwt-decode"
-import { useRouter } from "next/navigation"
 import { useEffect } from "react"
-import { useCookies } from "react-cookie"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 import { useSignUpInQuery } from "@/app/hooks/useSignUpInQuery"
@@ -10,7 +7,6 @@ import {
   SignUpInAction,
   SignUpInState,
 } from "@/components/Auth/signUpInReducer"
-import { JWT_AUTH_NAME, MILLISECONDS_IN_SECOND } from "@/lib/constants"
 import { DispatchProps } from "@/lib/types"
 
 import LabelAndField from "./LabelAndField"
@@ -22,14 +18,8 @@ const SignUpInForm = ({
   dispatch,
   state,
 }: DispatchProps<SignUpInAction, SignUpInState>) => {
-  const [, setCookie] = useCookies([JWT_AUTH_NAME])
-  const {
-    signUpInResponse,
-    userSignUpIn,
-    signUpInSuccessful,
-    userSignUpInError,
-  } = useSignUpInQuery()
-  const router = useRouter()
+  const { signUpInResponse, signUpInUserMutate, signUpInUserError } =
+    useSignUpInQuery()
 
   const {
     register,
@@ -40,32 +30,13 @@ const SignUpInForm = ({
   })
 
   useEffect(() => {
-    if (signUpInSuccessful) {
-      const jwt = signUpInResponse!.jwt
-      const decoded: JwtPayload = jwtDecode(jwt)
-
-      if (decoded?.exp)
-        setCookie(JWT_AUTH_NAME, jwt, {
-          expires: new Date(decoded.exp * MILLISECONDS_IN_SECOND),
-        })
-      else setCookie(JWT_AUTH_NAME, jwt)
-
-      dispatch({ type: "success" })
-      router.push("/about")
-    } else if (userSignUpInError) {
+    if (signUpInUserError) {
       dispatch({
         type: "error",
-        message: userSignUpInError.message,
+        message: signUpInUserError.message,
       })
     }
-  }, [
-    dispatch,
-    router,
-    setCookie,
-    signUpInResponse,
-    signUpInSuccessful,
-    userSignUpInError,
-  ])
+  }, [dispatch, signUpInResponse, signUpInUserError])
 
   const handleValidatedInput: SubmitHandler<SignUpIn> = async (data) => {
     dispatch({
@@ -73,9 +44,10 @@ const SignUpInForm = ({
       message: "Loading...",
     })
     const { email, password } = data
-    userSignUpIn({
+    signUpInUserMutate({
       path: stateConfig[state.mode].authPath,
       json: stateConfig[state.mode].authJson(email, password),
+      dispatch: dispatch,
     })
   }
 

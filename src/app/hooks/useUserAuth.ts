@@ -1,13 +1,40 @@
 "use client"
-import { useQueryClient } from "@tanstack/react-query"
+import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query"
+import ky, { HTTPError } from "ky"
+import { useCookies } from "react-cookie"
 
-import { QUERY_KEY } from "@/lib/constants"
+import { appConfig } from "@/lib/config"
+import { JWT_AUTH_NAME, QUERY_KEY } from "@/lib/constants"
 import { StrapiRegisteredUser } from "@/lib/types"
 
-export type User = { jwt: string; user: StrapiRegisteredUser }
+const fetchMe = async (jwt: string) => {
+  try {
+    const user = (await ky
+      .get(appConfig.apiURL + "/api/users/me", { json: { Authorization: jwt } })
+      .json()) as StrapiRegisteredUser
+    return { jwt, user }
+  } catch (error) {
+    if (error instanceof HTTPError && error.name === "HTTPError") {
+      const res = await error.response.json()
+      throw new Error(res.error.message)
+    }
+  }
+}
 
 export const useUserAuth = () => {
+  const [cookies, , removeCookie] = useCookies([JWT_AUTH_NAME])
   const queryClient = useQueryClient()
-  const user = queryClient.getQueryData([QUERY_KEY.user])
-  return user as User
+
+  const signOutUser = () => {
+    removeCookie(JWT_AUTH_NAME)
+    queryClient.invalidateQueries()
+    queryClient.removeQueries()
+  }
+
+  const query = useQuery({
+    queryKey: [QUERY_KEY.user],
+    queryFn: () => fetchMe(cookies[JWT_AUTH_NAME]),
+  })
+
+  return { ...query, signOutUser }
 }
