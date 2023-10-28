@@ -1,5 +1,5 @@
 "use client"
-import { QueryClient, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useQuery, useQueryClient } from "@tanstack/react-query"
 import ky, { HTTPError } from "ky"
 import { useCookies } from "react-cookie"
 
@@ -10,7 +10,9 @@ import { StrapiRegisteredUser } from "@/lib/types"
 const fetchMe = async (jwt: string) => {
   try {
     const user = (await ky
-      .get(appConfig.apiURL + "/api/users/me", { json: { Authorization: jwt } })
+      .get(appConfig.apiURL + "/api/users/me", {
+        headers: { Authorization: `Bearer ${jwt}` },
+      })
       .json()) as StrapiRegisteredUser
     return { jwt, user }
   } catch (error) {
@@ -32,6 +34,7 @@ export const useUserAuth = () => {
   }
 
   const query = useQuery({
+    enabled: cookies.jwt_authentication != null,
     queryKey: [QUERY_KEY.user],
     queryFn: () => fetchMe(cookies[JWT_AUTH_NAME]),
   })
