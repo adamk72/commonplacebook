@@ -5,14 +5,14 @@ import { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { ZodType, z } from "zod"
 
-import { Word } from "@/data/word"
+import { FreeDictionaryWord } from "@/data/freeDictionaryWord"
 
 import Button from "./Button"
 
-type JustWord = Partial<Word>
+type JustWord = Partial<FreeDictionaryWord>
 
 export const GrabAWord = () => {
-  const [word, setWord] = useState<Word>()
+  const [word, setWord] = useState<FreeDictionaryWord>()
   const [error, setError] = useState<{
     title: string
     message: string
@@ -32,7 +32,7 @@ export const GrabAWord = () => {
   const handleValidatedInput: SubmitHandler<JustWord> = async (data) => {
     const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${data.word}`
     try {
-      const words: Word[] = await ky.get(url).json()
+      const words: FreeDictionaryWord[] = await ky.get(url).json()
       setWord(words[0])
     } catch (error) {
       setWord(undefined)
