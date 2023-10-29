@@ -159,7 +159,6 @@
   "eucatastrophe",
   "ex",
   "excoriate",
-  "excoriates",
   "exculpate",
   "excursus",
   "exhaustive",
