@@ -1,14 +1,16 @@
 import { ReactElement } from "react"
 
+export type FormSurfaceWithTitleProps = {
+  title: string
+  subtitle: string
+  children: ReactElement
+}
+
 const FormSurfaceWithTitle = ({
   title,
   subtitle,
   children,
-}: {
-  title: string
-  subtitle: string
-  children: ReactElement
-}) => {
+}: FormSurfaceWithTitleProps) => {
   return (
     <div className="flex items-center bg-white dark:bg-gray-900">
       <div className="container mx-auto">

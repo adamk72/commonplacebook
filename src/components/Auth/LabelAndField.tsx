@@ -1,17 +1,17 @@
 import React, { ReactElement } from "react"
 import { FieldErrors, UseFormRegister } from "react-hook-form"
 
-import { SignUpIn } from "./SignUpIn"
+import { SignUpInFields } from "./SignUpInPanel"
 
 type LabelAndFieldProps = {
   placeholder?: string
   type: string
-  name: keyof SignUpIn
+  name: keyof SignUpInFields
   id?: string
   label: string
   labelLink?: ReactElement
-  errors?: FieldErrors<SignUpIn>
-  register: UseFormRegister<SignUpIn>
+  errors?: FieldErrors<SignUpInFields>
+  register: UseFormRegister<SignUpInFields>
 }
 
 const LabelAndField = (props: LabelAndFieldProps) => {

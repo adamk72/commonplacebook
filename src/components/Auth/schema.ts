@@ -2,7 +2,7 @@ import { ZodType, z } from "zod"
 
 import { appConfig } from "@/lib/config"
 
-import { SignUpIn } from "./SignUpIn"
+import { SignUpInPanel } from "./SignUpInPanel"
 
 const baseSchema = {
   email: z.string().email().trim(),

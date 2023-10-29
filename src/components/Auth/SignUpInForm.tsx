@@ -10,7 +10,7 @@ import {
 import { DispatchProps } from "@/lib/types"
 
 import LabelAndField from "./LabelAndField"
-import { SignUpIn } from "./SignUpIn"
+import { SignUpInFields } from "./SignUpInPanel"
 import { stateConfig } from "./stateConfig"
 import Button from "../Button"
 
@@ -25,7 +25,7 @@ const SignUpInForm = ({
     register,
     handleSubmit,
     formState: { errors: fErrors },
-  } = useForm<SignUpIn>({
+  } = useForm<SignUpInFields>({
     resolver: zodResolver(stateConfig[state.mode].schema),
   })
 
@@ -38,7 +38,7 @@ const SignUpInForm = ({
     }
   }, [dispatch, signUpInResponse, signUpInUserError])
 
-  const handleValidatedInput: SubmitHandler<SignUpIn> = async (data) => {
+  const handleValidatedInput: SubmitHandler<SignUpInFields> = async (data) => {
     dispatch({
       type: "loading",
       message: "Loading...",
