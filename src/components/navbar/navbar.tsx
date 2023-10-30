@@ -12,7 +12,12 @@ const Navbar = () => {
     <nav className="navbar bg-base-300">
       <div className="navbar-start flex gap-4">
         <Link href={"/"}>Home</Link>
-        {isSuccess && <Link href={"/about"}>About</Link>}
+        {isSuccess && (
+          <>
+            <Link href={"/about"}>About</Link>
+            <Link href={"/upload"}>Upload</Link>
+          </>
+        )}
       </div>
       {isSuccess && (
         <>

@@ -14,5 +14,5 @@ export function middleware(request: NextRequest) {
 
 // Supports both a single string value or an array of matchers
 export const config = {
-  matcher: ["/about/:path"],
+  matcher: ["/about/:path", "/upload/:path"],
 }
