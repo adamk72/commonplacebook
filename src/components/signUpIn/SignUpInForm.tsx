@@ -6,7 +6,7 @@ import { useSignUpInQuery } from "@/app/hooks/useSignUpInQuery"
 import {
   SignUpInAction,
   SignUpInState,
-} from "@/components/Auth/signUpInReducer"
+} from "@/components/signUpIn/signUpInReducer"
 import { DispatchProps } from "@/lib/types"
 
 import LabelAndField from "./LabelAndField"

@@ -6,7 +6,7 @@ import { useUserAuth } from "@/app/hooks/useUserAuth"
 import {
   signUpInReducer,
   signUpInReducerDefault,
-} from "@/components/Auth/signUpInReducer"
+} from "@/components/signUpIn/signUpInReducer"
 
 import SignUpInForm from "./SignUpInForm"
 import { stateConfig } from "./stateConfig"

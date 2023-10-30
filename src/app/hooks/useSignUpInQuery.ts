@@ -4,7 +4,7 @@ import ky, { HTTPError } from "ky"
 import { Dispatch } from "react"
 import { useCookies } from "react-cookie"
 
-import { SignUpInAction } from "@/components/Auth/signUpInReducer"
+import { SignUpInAction } from "@/components/signUpIn/signUpInReducer"
 import { appConfig } from "@/lib/config"
 import {
   JWT_AUTH_NAME,

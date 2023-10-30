@@ -1,4 +1,4 @@
-import { SignUpInPanel } from "@/components/Auth/SignUpInPanel"
+import { SignUpInPanel } from "@/components/signUpIn/SignUpInPanel"
 import { GrabAWord } from "@/components/GrabAWord"
 import Words from "@/components/Words"
 
