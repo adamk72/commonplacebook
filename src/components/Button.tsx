@@ -11,7 +11,7 @@ const Button = ({
     <div className="mb-6">
       <button
         type={type}
-        className="w-full px-3 py-4 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
+        className="px-3 py-2 text-white bg-indigo-500 rounded-md focus:bg-indigo-600 focus:outline-none"
       >
         {label}
       </button>
