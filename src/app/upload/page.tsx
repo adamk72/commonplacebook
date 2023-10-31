@@ -1,8 +1,8 @@
 "use client"
-import UserBulkUpload from "@/components/userBulkUpload"
+import UserBulkUploadForm from "@/components/userBulkUpload"
 
 const Upload = () => {
-  return <UserBulkUpload></UserBulkUpload>
+  return <UserBulkUploadForm></UserBulkUploadForm>
 }
 
 export default Upload
