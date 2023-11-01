@@ -4,7 +4,7 @@ import { FreeDictionaryWord } from "@/data/freeDictionaryWord"
 
 export default async function Words() {
   const file = await fs.readFile(
-    process.cwd() + "/src/data/freeDictonaryWords.json",
+    process.cwd() + "/src/data/freeDictionaryWords.json",
     "utf8"
   )
   const words = JSON.parse(file)
