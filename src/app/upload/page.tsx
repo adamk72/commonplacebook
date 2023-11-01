@@ -1,8 +1,14 @@
 "use client"
-import UserBulkUploadForm from "@/components/userBulkUpload"
+
+import FormArrayContextProvider from "@/components/providers/FormArrayContextProvider"
+import UserBulkUploadForm from "@/components/userBulkUpload/UserBulkUploadForm"
 
 const Upload = () => {
-  return <UserBulkUploadForm></UserBulkUploadForm>
+  return (
+    <FormArrayContextProvider>
+      <UserBulkUploadForm />
+    </FormArrayContextProvider>
+  )
 }
 
 export default Upload

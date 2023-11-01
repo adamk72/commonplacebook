@@ -2,14 +2,14 @@ import { ZodType, z } from "zod"
 
 import { appConfig } from "@/lib/config"
 
-import { SignUpInPanel } from "./SignUpInPanel"
+import { SignUpInFields } from "./SignUpInPanel"
 
 const baseSchema = {
   email: z.string().email().trim(),
   password: z.string().min(appConfig.strapi.passwordMinLength),
 }
 
-export const signUpSchema: ZodType<SignUpIn> = z
+export const signUpSchema: ZodType<SignUpInFields> = z
   .object({
     ...baseSchema,
     confirm: z.string(),
@@ -19,6 +19,6 @@ export const signUpSchema: ZodType<SignUpIn> = z
     path: ["confirm"],
   })
 
-export const signInSchema: ZodType<SignUpIn> = z.object({
+export const signInSchema: ZodType<SignUpInFields> = z.object({
   ...baseSchema,
 })
