@@ -1,5 +1,5 @@
-import { SignUpInPanel } from "@/components/signUpIn/SignUpInPanel"
 import { GrabAWord } from "@/components/GrabAWord"
+import { SignUpInPanel } from "@/components/signUpIn/SignUpInPanel"
 import Words from "@/components/Words"
 
 export default function Home() {
