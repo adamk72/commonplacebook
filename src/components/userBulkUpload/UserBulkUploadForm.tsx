@@ -1,10 +1,8 @@
-import { useContext } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 
 import { useAddWordsViaArray } from "./addWordList"
 import DisplayList from "./DisplayList"
 import Button from "../Button"
-import { FormContext } from "../providers/FormArrayContextProvider"
 
 type UserBulkUploadFormFields = {
   text: string
@@ -18,11 +16,9 @@ const UserBulkUploadForm = () => {
     isPending,
     data: mutatedData,
   } = useAddWordsViaArray()
-  const { setArray } = useContext(FormContext)
   const { register, handleSubmit } = useForm<UserBulkUploadFormFields>()
   const onSubmit: SubmitHandler<UserBulkUploadFormFields> = (data) => {
     const array = data.text.split("\n").sort()
-    setArray(array)
     mutate(array)
   }
 

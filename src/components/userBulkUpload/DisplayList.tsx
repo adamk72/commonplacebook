@@ -1,8 +1,3 @@
-import { useContext } from "react"
-
-import { FormContext } from "../providers/FormArrayContextProvider"
-
-// This could probably just take props, but chose to use context for practice.
 const DisplayList = ({ array }: { array: string[] }) => {
   return (
     <div>
