@@ -3,9 +3,7 @@ import { useContext } from "react"
 import { FormContext } from "../providers/FormArrayContextProvider"
 
 // This could probably just take props, but chose to use context for practice.
-const DisplayList = () => {
-  const { array } = useContext(FormContext)
-
+const DisplayList = ({ array }: { array: string[] }) => {
   return (
     <div>
       {array.length > 0 && (
