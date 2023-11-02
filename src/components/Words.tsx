@@ -15,7 +15,7 @@ export default async function Words() {
         {words &&
           words.map((word: FreeDictionaryWord) => (
             <li key={word.word}>
-              {word.word} =&gt; {word.phonetic}r
+              {word.word} =&gt; {word.phonetic}
             </li>
           ))}
       </ul>

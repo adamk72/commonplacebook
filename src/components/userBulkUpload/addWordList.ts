@@ -41,10 +41,13 @@ const bulkAddWordList = async ({
 
   ;(await results).forEach((res, num) => {
     if (res.status == "fulfilled") {
-      counts.fulfilled.push(array[num])
+      counts.fulfilled.push(array[num] ?? "")
     }
     if (res.status == "rejected") {
-      counts.rejected.push({ word: array[num], message: res.reason.message })
+      counts.rejected.push({
+        word: array[num] ?? "",
+        message: res.reason.message,
+      })
     }
   })
   return counts
