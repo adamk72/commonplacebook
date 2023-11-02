@@ -35,7 +35,7 @@ const UserBulkUploadForm = () => {
         )}
         <span>Rejected</span>
         {mutatedData && mutatedData.rejected && (
-          <DisplayList array={mutatedData.rejected.map((w) => w.word)} />
+          <DisplayList array={mutatedData.rejected.map((w) => w)} />
         )}
       </div>
       <div className="flex flex-col p-4 gap-3 border border-red-300">
