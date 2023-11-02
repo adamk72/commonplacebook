@@ -13,6 +13,7 @@ const bulkAddWordList = async ({
   jwt: string
 }) => {
   const numRegEx = new RegExp("\\d+")
+  const tagRemoval = /(<([^>]+)>)/gi
   const results = Promise.allSettled(
     array.map(async (word) => {
       if (numRegEx.test(word))
@@ -21,7 +22,11 @@ const bulkAddWordList = async ({
       try {
         const results = await ky
           .post(appConfig.apiURL + "/api/words", {
-            json: { data: { word } },
+            json: {
+              data: {
+                word: word.replace(tagRemoval, "").replaceAll('"', "").trim(),
+              },
+            },
             headers: { Authorization: `Bearer ${jwt}` },
           })
           .json()
