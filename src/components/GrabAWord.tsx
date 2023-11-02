@@ -5,7 +5,7 @@ import { useState } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 import { ZodType, z } from "zod"
 
-import { FreeDictionaryWord } from "@/data/freeDictionaryWord"
+import { FreeDictionaryWord } from "@/lib/types/freeDictionaryWord"
 
 import Button from "./Button"
 

@@ -6,15 +6,15 @@ export interface FreeDictionaryWord {
   phonetic: string
   phonetics: Phonetic[]
   origin: string
-  meanings: Meaning[]
+  meanings: FDMeaning[]
 }
 
-export interface Meaning {
+export interface FDMeaning {
   partOfSpeech: string
-  definitions: Definition[]
+  definitions: FDDefinition[]
 }
 
-export interface Definition {
+export interface FDDefinition {
   definition: string
   example: string
   synonyms: any[]

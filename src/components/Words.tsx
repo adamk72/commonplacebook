@@ -1,6 +1,6 @@
 import { promises as fs } from "fs"
 
-import { FreeDictionaryWord } from "@/data/freeDictionaryWord"
+import { FreeDictionaryWord } from "@/lib/types/freeDictionaryWord"
 
 export default async function Words() {
   const file = await fs.readFile(
