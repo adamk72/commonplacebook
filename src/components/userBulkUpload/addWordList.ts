@@ -12,8 +12,12 @@ const bulkAddWordList = async ({
   array: string[]
   jwt: string
 }) => {
+  const numRegEx = new RegExp("\\d+")
   const results = Promise.allSettled(
     array.map(async (word) => {
+      if (numRegEx.test(word))
+        throw new Error("We currently do not accept words with numbers in them")
+
       try {
         const results = await ky
           .post(appConfig.apiURL + "/api/words", {
