@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_dictionaries",
+  "info": {
+    "singularName": "user-dictionary",
+    "pluralName": "user-dictionaries",
+    "displayName": "User Dictionary",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "words": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::word.word"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_dictionary"
+    }
+  }
+}
