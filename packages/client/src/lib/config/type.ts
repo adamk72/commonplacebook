@@ -1,6 +1,6 @@
 export type AppConfig = {
-  apiURL: string
+  apiURL: string;
   strapi: {
-    passwordMinLength: number
-  }
-}
+    passwordMinLength: number;
+  };
+};

@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react"
+import { ReactElement } from "react"
 import { FieldErrors, UseFormRegister } from "react-hook-form"
 
 import { SignUpInFields } from "./SignUpInPanel"

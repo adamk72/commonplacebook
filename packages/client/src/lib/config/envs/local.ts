@@ -1,12 +1,12 @@
-import { defineConfig } from "../defineConfig"
+import { defineConfig } from '../defineConfig';
 
 export const defaultConfig = {
-  apiURL: "http://localhost:1337",
+  apiURL: 'http://localhost:1337',
   strapi: {
     passwordMinLength: 6,
   },
-}
+};
 
 export function createLocalConfig() {
-  return defineConfig(defaultConfig)
+  return defineConfig(defaultConfig);
 }

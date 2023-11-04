@@ -1,10 +1,10 @@
+import { stateConfig } from "./stateConfig"
+
 import {
   SignUpInAction,
   SignUpInState,
 } from "@/components/signUpIn/signUpInReducer"
 import { DispatchProps } from "@/lib/types"
-
-import { stateConfig } from "./stateConfig"
 
 const ToggleClause = ({
   dispatch,

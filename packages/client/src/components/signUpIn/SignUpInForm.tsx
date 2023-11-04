@@ -2,17 +2,17 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useEffect } from "react"
 import { SubmitHandler, useForm } from "react-hook-form"
 
+import LabelAndField from "./LabelAndField"
+import { SignUpInFields } from "./SignUpInPanel"
+import { stateConfig } from "./stateConfig"
+import Button from "../Button"
+
 import { useSignUpInQuery } from "@/app/hooks/useSignUpInQuery"
 import {
   SignUpInAction,
   SignUpInState,
 } from "@/components/signUpIn/signUpInReducer"
 import { DispatchProps } from "@/lib/types"
-
-import LabelAndField from "./LabelAndField"
-import { SignUpInFields } from "./SignUpInPanel"
-import { stateConfig } from "./stateConfig"
-import Button from "../Button"
 
 const SignUpInForm = ({
   dispatch,

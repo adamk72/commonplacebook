@@ -1,4 +1,4 @@
-import { AppConfig } from "./type"
+import { AppConfig } from './type';
 export function defineConfig(config: AppConfig) {
-  return config
+  return config;
 }

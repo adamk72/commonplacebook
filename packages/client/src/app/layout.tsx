@@ -2,10 +2,10 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 
 import "./globals.css"
+import CookiesProviderWrapper from "../components/providers/CookiesProviderWrapper"
+
 import Navbar from "@/components/navbar/navbar"
 import QueryClientProviderWrapper from "@/components/providers/QueryClientProviderWrapper"
-
-import CookiesProviderWrapper from "../components/providers/CookiesProviderWrapper"
 
 const inter = Inter({ subsets: ["latin"] })
 

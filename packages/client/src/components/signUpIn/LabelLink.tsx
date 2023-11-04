@@ -1,5 +1,3 @@
-import React from "react"
-
 const LabelLink = ({ text, href }: { text: string; href: string }) => {
   return (
     <a

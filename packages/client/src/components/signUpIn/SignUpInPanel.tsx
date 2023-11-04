@@ -2,16 +2,16 @@
 import { SnackbarProvider } from "notistack"
 import { useReducer } from "react"
 
+import SignUpInForm from "./SignUpInForm"
+import { stateConfig } from "./stateConfig"
+import ToggleClause from "./ToggleClause"
+import FormSurfaceWithTitle from "../FormSurface"
+
 import { useUserAuth } from "@/app/hooks/useUserAuth"
 import {
   signUpInReducer,
   signUpInReducerDefault,
 } from "@/components/signUpIn/signUpInReducer"
-
-import SignUpInForm from "./SignUpInForm"
-import { stateConfig } from "./stateConfig"
-import ToggleClause from "./ToggleClause"
-import FormSurfaceWithTitle from "../FormSurface"
 
 export type SignUpInFields = {
   email: string

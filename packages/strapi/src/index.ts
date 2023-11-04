@@ -16,16 +16,16 @@ export default {
    */
   bootstrap({ strapi }) {
     strapi.db.lifecycles.subscribe({
-      models: ["plugin::users-permissions.user"],
+      models: ['plugin::users-permissions.user'],
 
       // your lifecycle hooks
       async beforeDelete(event) {
         // @TODO: Make this more robust, with error checking.
         // Should work for initial development.
         strapi
-          .service("api::user-dictionary.user-dictionary")
-          .deleteWithUserId(strapi, event.params.where.id)
+          .service('api::user-dictionary.user-dictionary')
+          .deleteWithUserId(strapi, event.params.where.id);
       },
-    })
+    });
   },
-}
+};
