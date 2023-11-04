@@ -2,6 +2,8 @@
  * user-dictionary router
  */
 
-import { factories } from '@strapi/strapi';
+import { factories } from "@strapi/strapi"
 
-export default factories.createCoreRouter('api::user-dictionary.user-dictionary');
+export default factories.createCoreRouter(
+  "api::user-dictionary.user-dictionary"
+)

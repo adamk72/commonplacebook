@@ -1,7 +1,9 @@
 # Initial Database Setup
+
 Make sure to install PostgresDB and run `createdb commonplacebook-strapi`.
 
 Example of auto-generated `.env` file from initial install and used on localhost:
+
 ```
 HOST=0.0.0.0
 PORT=133

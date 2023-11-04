@@ -6,9 +6,20 @@
     "packages/*"
   ],
   "scripts": {
-    "client": "yarn workspace client start",
-    "server": "yarn workspace server start",
-    "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\""
+    "client": "yarn workspace @commonplacebook/client start",
+    "server": "yarn workspace @commonplacebook/strapi start",
+    "start": "concurrently --kill-others-on-fail \"yarn server\"  \"yarn client\"",
+    "format": "yarn format:code && yarn format:other",
+    "format:code": "yarn prettier:code --write",
+    "format:other": "yarn prettier:other --write",
+    "prettier:code": "prettier --cache --cache-strategy content \"**/*.{js,ts}\"",
+    "prettier:other": "prettier --cache --cache-strategy content \"**/*.{md,css,scss,yaml,yml}\""
   },
-  "packageManager": "yarn@4.0.1"
+  "packageManager": "yarn@4.0.1",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  },
+  "dependencies": {
+    "prettier": "^3.0.3"
+  }
 }
