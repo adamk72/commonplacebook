@@ -1,9 +1,8 @@
-import { useMutation } from "@tanstack/react-query"
-import ky, { HTTPError } from "ky"
-import { useCookies } from "react-cookie"
-
 import { appConfig } from "@/lib/config"
 import { JWT_AUTH_NAME } from "@/lib/constants"
+import { UseMutationResult, useMutation } from "@tanstack/react-query"
+import ky, { HTTPError } from "ky"
+import { useCookies } from "react-cookie"
 
 const bulkAddWordList = async ({
   array,

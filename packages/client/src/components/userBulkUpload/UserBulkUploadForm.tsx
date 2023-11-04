@@ -1,8 +1,8 @@
 import { SubmitHandler, useForm } from "react-hook-form"
 
-import { useAddWordsViaArray } from "./addWordList"
 import DisplayList from "./DisplayList"
 import Button from "../Button"
+import { useAddWordsViaArray } from './addWordList'
 
 type UserBulkUploadFormFields = {
   text: string
@@ -35,7 +35,7 @@ const UserBulkUploadForm = () => {
         )}
         <span>Rejected</span>
         {mutatedData && mutatedData.rejected && (
-          <DisplayList array={mutatedData.rejected.map((w) => w)} />
+          <DisplayList array={mutatedData.rejected.map((w: {word: string, message: string}) => w)} />
         )}
       </div>
       <div className="flex flex-col p-4 gap-3 border border-red-300">
