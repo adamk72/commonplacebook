@@ -1,4 +1,4 @@
-import { addSuperAdmin } from './indexFns/bootstrap';
+import { addInitialCommonplaceWords, addSuperAdmin } from './indexFns/bootstrap';
 
 export default {
   /**
@@ -17,8 +17,9 @@ export default {
    * run jobs, or perform some special logic.
    */
   async bootstrap({ strapi }) {
-    addSuperAdmin(strapi)
-    
+    addSuperAdmin(strapi);
+    addInitialCommonplaceWords(strapi);
+
     strapi.db.lifecycles.subscribe({
       models: ['plugin::users-permissions.user'],
 

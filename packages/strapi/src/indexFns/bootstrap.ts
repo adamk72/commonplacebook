@@ -1,7 +1,27 @@
+const commonplaceWords = ['good', 'nice', 'cringe'];
+
+export const addInitialCommonplaceWords = (strapi) => {
+  Promise.all(
+    commonplaceWords.map(async (word) => {
+      await strapi.entityService.create('api::word.word', {
+        data: {
+          word,
+        },
+      });
+    })
+  )
+    .then((_result) => console.info('Commonplace words successfully added.'))
+    .catch((_error) => {
+      console.warn('Unable to bootstrap commonplace word list. Words may already exist.');
+    });
+};
+
 export const addSuperAdmin = async (strapi) => {
   // create user admin if it doesn't exist
   await strapi.admin.services.role.createRolesIfNoneExist();
-  const superAdminRole = await strapi.db.query('admin::role').findOne({ where: { code: 'strapi-super-admin' } });
+  const superAdminRole = await strapi.db
+    .query('admin::role')
+    .findOne({ where: { code: 'strapi-super-admin' } });
   const superAdmin = await strapi.db.query('admin::user').findOne({ where: { username: 'admin' } });
   if (!superAdmin) {
     const params = {
@@ -11,13 +31,13 @@ export const addSuperAdmin = async (strapi) => {
       isActive: true,
       confirmed: true,
       password: null,
-      roles: null
-    }
-    params.password = await strapi.admin.services.auth.hashPassword("Admin1234");
-    params.roles = [superAdminRole.id]
-    await strapi.db.query("admin::user").create({
+      roles: null,
+    };
+    params.password = await strapi.admin.services.auth.hashPassword('Admin1234');
+    params.roles = [superAdminRole.id];
+    await strapi.db.query('admin::user').create({
       data: { ...params },
-      populate: ['roles']
+      populate: ['roles'],
     });
   }
-}
+};
