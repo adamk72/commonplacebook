@@ -17,6 +17,7 @@ To get it up and running do the following (some you only have to do once). Make 
 - Run the development process:
   - `yarn client:dev` will fire up NextJS (usually on port 3000).
   - `yarn strapi:dev` will fire up Strapi (usually on port 1337).
+    - Login with `admin@email.com` and `Admin1234`.
   - -or- `yarn dev` to run both in one terminal.
 - Other commands of interest:
   - `yarn format` to format everything (via prettier).
