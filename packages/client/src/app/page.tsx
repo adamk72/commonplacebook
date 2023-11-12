@@ -1,6 +1,7 @@
 import { GrabAWord } from "@/components/GrabAWord"
 import { SignUpInPanel } from "@/components/signUpIn/SignUpInPanel"
 import Words from "@/components/Words"
+import WorkhorseWordsList from '@/components/workhorseWordsList/WorkhorseWordsList'
 
 export default function Home() {
   return (
@@ -8,6 +9,7 @@ export default function Home() {
       <Words />
       <GrabAWord />
       <SignUpInPanel />
+      <WorkhorseWordsList />
     </main>
   )
 }
