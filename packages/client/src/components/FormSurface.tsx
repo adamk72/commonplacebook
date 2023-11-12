@@ -1,9 +1,9 @@
-import { ReactElement } from "react"
+import { ReactNode } from "react"
 
 export type FormSurfaceWithTitleProps = {
   title: string
-  subtitle: string
-  children: ReactElement
+  subtitle?: string
+  children: ReactNode
 }
 
 const FormSurfaceWithTitle = ({
