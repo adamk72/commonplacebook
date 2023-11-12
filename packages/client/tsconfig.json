@@ -14,7 +14,8 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ]
+      ],
+      "@tanstack/react-query": ["../../../../../node_modules/@tanstack/foo"]
     },
     "noEmit": true
   },

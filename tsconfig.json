@@ -19,7 +19,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "preserveSymlinks": true,
+    "preserveSymlinks": true
   },
   "exclude": [
     "node_modules",

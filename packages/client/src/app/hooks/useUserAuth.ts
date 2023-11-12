@@ -23,6 +23,7 @@ const fetchMe = async (jwt: string) => {
   }
 };
 
+
 export const useUserAuth = () => {
   const [cookies, , removeCookie] = useCookies([JWT_AUTH_NAME]);
   const queryClient = useQueryClient();
@@ -33,11 +34,11 @@ export const useUserAuth = () => {
     queryClient.removeQueries();
   };
 
-  const query = useQuery({
+  const { isSuccess, data } = useQuery({
     enabled: cookies.jwt_authentication != null,
     queryKey: [QUERY_KEY.user],
     queryFn: () => fetchMe(cookies[JWT_AUTH_NAME]),
   });
 
-  return { ...query, signOutUser };
+  return { isSuccess, data, signOutUser };
 };
