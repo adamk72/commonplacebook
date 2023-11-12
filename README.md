@@ -23,6 +23,11 @@ To get it up and running do the following (some you only have to do once). Make 
   - `yarn format` to format everything (via prettier).
   - `yarn lint` to lint all files (via eslint).
   - `yarn lint:fix` like lint, but fix the files too.
+  - `yarn strapi:generate` will update the content type and copy the data over to the client package. Use whenever you update a content type. Requires the use of helper functions from the [typeHelper.ts](packages/client/src/lib/types/typeHelpers.ts) file. Quick overview:
+    - `CollectionTypeResponse<>` will return the data/meta structure. 
+    - You will need to know the api "id", e.g., "api::word.word", to complete the generic. 
+    - Find choices at the bottom of [strapi/../contentTypes.d.ts](packages/strapi/types/generated/contentTypes.d.ts) (or search for "declare module '@strapi/types'").
+    - Example use case: `CollectionTypeResponse<"api::word.word">`
 
 ## Setting up the local DB
 
