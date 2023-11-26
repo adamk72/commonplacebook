@@ -12,16 +12,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "words": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::word.word"
-    },
     "user": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "user_dictionary"
+    },
+    "user_words": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-word.user-word"
     }
   }
 }

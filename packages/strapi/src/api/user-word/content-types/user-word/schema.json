@@ -1,0 +1,29 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_words",
+  "info": {
+    "singularName": "user-word",
+    "pluralName": "user-words",
+    "displayName": "User Word",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "word": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::word.word"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "visible",
+        "hidden"
+      ],
+      "default": "visible"
+    }
+  }
+}

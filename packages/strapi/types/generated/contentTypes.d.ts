@@ -315,15 +315,15 @@ export interface ApiUserDictionaryUserDictionary extends Schema.CollectionType {
     draftAndPublish: false;
   };
   attributes: {
-    words: Attribute.Relation<
-      'api::user-dictionary.user-dictionary',
-      'oneToMany',
-      'api::word.word'
-    >;
     user: Attribute.Relation<
       'api::user-dictionary.user-dictionary',
       'oneToOne',
       'plugin::users-permissions.user'
+    >;
+    user_words: Attribute.Relation<
+      'api::user-dictionary.user-dictionary',
+      'oneToMany',
+      'api::user-word.user-word'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -338,6 +338,30 @@ export interface ApiUserDictionaryUserDictionary extends Schema.CollectionType {
       'oneToOne',
       'admin::user'
     > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiUserWordUserWord extends Schema.CollectionType {
+  collectionName: 'user_words';
+  info: {
+    singularName: 'user-word';
+    pluralName: 'user-words';
+    displayName: 'User Word';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    word: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'api::word.word'>;
+    status: Attribute.Enumeration<['visible', 'hidden']> & Attribute.DefaultTo<'visible'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'admin::user'> &
       Attribute.Private;
   };
 }
@@ -636,6 +660,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::user-dictionary.user-dictionary': ApiUserDictionaryUserDictionary;
+      'api::user-word.user-word': ApiUserWordUserWord;
       'api::word.word': ApiWordWord;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
