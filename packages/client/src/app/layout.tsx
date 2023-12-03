@@ -6,6 +6,7 @@ import CookiesProviderWrapper from "../components/providers/CookiesProviderWrapp
 
 import Navbar from "@/components/navbar/navbar"
 import QueryClientProviderWrapper from "@/components/providers/QueryClientProviderWrapper"
+import { appConfig } from '@/lib/config';
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
     "Your guide to making your words less common and more articulate!",
 }
 
+
 export default function RootLayout({
   children,
 }: {
@@ -23,10 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <QueryClientProviderWrapper>
-          <Navbar></Navbar>
-          <CookiesProviderWrapper>{children}</CookiesProviderWrapper>
-        </QueryClientProviderWrapper>
+          <QueryClientProviderWrapper>
+            <Navbar></Navbar>
+            <CookiesProviderWrapper>{children}</CookiesProviderWrapper>
+          </QueryClientProviderWrapper>
       </body>
     </html>
   )
