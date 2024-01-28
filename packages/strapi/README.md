@@ -1,6 +1,9 @@
 # Initial Database Setup
 
-Make sure to install PostgresDB and run `createdb commonplacebook-strapi`.
+1. Make sure to install PostgresDB and run `createdb commonplacebook-strapi` (or do it manually in `psql` via `CREATE DATABASE commonplacebook-strapi`).
+2. Create a DB role called 'strapi' in `psql` using: `CREATE ROLE strapi WITH LOGIN PASSWORD 'strapi';` (@TODO: Make the password more secure).
+
+For testing purposes, when the database is bootstrapped, there will be a default admin user called 'admin@email.com' with a password 'Admin1234' (see [packages/strapi/src/indexFns/bootstrap.ts](/packages/strapi/src/indexFns/bootstrap.ts))
 
 Example of auto-generated `.env` file from initial install and used on localhost:
 
@@ -12,18 +15,14 @@ DATABASE_CLIENT=postgres
 DATABASE_HOST=127.0.0.1
 DATABASE_PORT=5432
 DATABASE_NAME=commonplacebook-strapi
-DATABASE_USERNAME=postgres
-DATABASE_PASSWORD=postgres
+DATABASE_USERNAME=strapi
+DATABASE_PASSWORD=strapi
 DATABASE_SSL=false
 ```
 
 # Running the app
 
 `yarn build && yarn start` (or `yarn dev` once you get going)
-
-# GraphQL
-
-After build/start go to the [GraphQL Playground](http://localhost:1337/graphql/)
 
 # 🚀 Getting started with Strapi
 
