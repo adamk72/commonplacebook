@@ -1,6 +1,10 @@
 Notes that, hopefully, will keep me organized on how Strapi works, starting with [Strapi Docs Website](https://docs.strapi.io/dev-docs/intro). The goal is to use Strapi as idiomatically as possible and also learn more about database interactions.
 
-# Request path:
+# Discoveries During Development
+
+
+# Strapi in General
+## Request path:
 
 1. Strapi receives request.
 2. Go through global middleware.
@@ -10,7 +14,7 @@ Notes that, hopefully, will keep me organized on how Strapi works, starting with
 5. Model data interaction via Entity Service and/or Query Engine.
 7. Return response. Can go back through both types of middleware before sending. Middleware that returns before `await next()` will cause an immediate send. 
 
-# Requests and responses
+## Requests and responses
 
 `ctx` object is passed to every element. Contains:
 
@@ -18,7 +22,7 @@ Notes that, hopefully, will keep me organized on how Strapi works, starting with
 - `ctx.state` &mdash; about `.user` and `.auth` concepts.
 - `ctx.response` &mdash; has a `.body` and other common items.
 
-# Routes
+## Routes
 
 There are `core` and `custom` routers.
 
@@ -26,7 +30,7 @@ Core includes `find`, `findOne`, `create`, `update`, and `delete`. Use `createCo
 
 Polices and middleware are in separate folders but referred to by name when configuring.
 
-## Policies
+### Policies
 
 Policies are pre-controller actions and can be global.
 
@@ -34,7 +38,7 @@ Policies are pre-controller actions and can be global.
 - use api::api-name.policy-name for API policies
 - use plugin::plugin-name.policy-name for plugin policies
 
-## Middleware
+### Middleware
 
 [Middleware docs](https://docs.strapi.io/dev-docs/backend-customization/middlewares)
 
@@ -42,9 +46,9 @@ Policies are pre-controller actions and can be global.
 - use api::api-name.middleware-name for API-level middlewares
 - use plugin::plugin-name.middleware-name for plugin middlewares
 
-## Controllers and services
+### Controllers and services
 
-### Controllers
+#### Controllers
 
 For new controllers, can use CLI `strapi generate` or manually create the file (sync or async is possible).
 
@@ -54,7 +58,7 @@ For new controllers, can use CLI `strapi generate` or manually create the file (
 
 Use `yarn strapi controllers:list` to see list of controllers (need to run inside /packages/strapi). Shows list of controller names.
 
-## Services
+### Services
 
 As with controllers, use CLI `strapi generate`.
 
