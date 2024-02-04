@@ -2,8 +2,16 @@ Notes that, hopefully, will keep me organized on how Strapi works, starting with
 
 # Discoveries During Development
 
+## Gotchas
+- You may find documentation to be out of date, especially in some of the blog posts. For example, [this](https://strapi.io/blog/strapi-internals-customizing-the-backend-part-1-models-controllers-and-routes) post refers to `ctx.request.params` which should actually be just `ctx.params`. 
 
 # Strapi in General
+
+Strapi backend is based on Koa. An intro is [here](https://koajs.com/#introduction). See "[Context](https://koajs.com/#context)" section in particular.
+
+## Useful (hopefully) links
+- [Strapi Internals Example](https://strapi.io/blog/strapi-internals-customizing-the-backend-part-1-models-controllers-and-routes)
+
 ## Request path:
 
 1. Strapi receives request.

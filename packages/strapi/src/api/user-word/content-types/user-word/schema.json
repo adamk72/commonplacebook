@@ -8,15 +8,10 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "word": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::word.word"
-    },
     "status": {
       "type": "enumeration",
       "enum": [
@@ -24,6 +19,16 @@
         "hidden"
       ],
       "default": "visible"
+    },
+    "word": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::word.word"
+    },
+    "owner": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "admin::user"
     }
   }
 }

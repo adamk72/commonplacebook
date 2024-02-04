@@ -303,45 +303,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiUserDictionaryUserDictionary extends Schema.CollectionType {
-  collectionName: 'user_dictionaries';
-  info: {
-    singularName: 'user-dictionary';
-    pluralName: 'user-dictionaries';
-    displayName: 'User Dictionary';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    user: Attribute.Relation<
-      'api::user-dictionary.user-dictionary',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    user_words: Attribute.Relation<
-      'api::user-dictionary.user-dictionary',
-      'oneToMany',
-      'api::user-word.user-word'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::user-dictionary.user-dictionary',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::user-dictionary.user-dictionary',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface ApiUserWordUserWord extends Schema.CollectionType {
   collectionName: 'user_words';
   info: {
@@ -351,14 +312,14 @@ export interface ApiUserWordUserWord extends Schema.CollectionType {
     description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
-    word: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'api::word.word'>;
     status: Attribute.Enumeration<['visible', 'hidden']> & Attribute.DefaultTo<'visible'>;
+    word: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'api::word.word'>;
+    owner: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'admin::user'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'admin::user'> &
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'admin::user'> &
@@ -634,12 +595,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.role'
     >;
-    user_dictionary: Attribute.Relation<
-      'plugin::users-permissions.user',
-      'oneToOne',
-      'api::user-dictionary.user-dictionary'
-    >;
-    words: Attribute.Relation<'plugin::users-permissions.user', 'oneToMany', 'api::word.word'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'plugin::users-permissions.user', 'oneToOne', 'admin::user'> &
@@ -659,7 +614,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::user-dictionary.user-dictionary': ApiUserDictionaryUserDictionary;
       'api::user-word.user-word': ApiUserWordUserWord;
       'api::word.word': ApiWordWord;
       'plugin::upload.file': PluginUploadFile;
