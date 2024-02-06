@@ -316,8 +316,12 @@ export interface ApiUserWordUserWord extends Schema.CollectionType {
   };
   attributes: {
     status: Attribute.Enumeration<['visible', 'hidden']> & Attribute.DefaultTo<'visible'>;
-    word: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'api::word.word'>;
-    owner: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'admin::user'>;
+    owner: Attribute.Relation<
+      'api::user-word.user-word',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    word: Attribute.Relation<'api::user-word.user-word', 'manyToOne', 'api::word.word'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::user-word.user-word', 'oneToOne', 'admin::user'> &
@@ -340,6 +344,7 @@ export interface ApiWordWord extends Schema.CollectionType {
   };
   attributes: {
     word: Attribute.String & Attribute.Unique;
+    user_words: Attribute.Relation<'api::word.word', 'oneToMany', 'api::user-word.user-word'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<'api::word.word', 'oneToOne', 'admin::user'> & Attribute.Private;

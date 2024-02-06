@@ -1,8 +1,27 @@
 # Dates
 
+## 05-FEB-2024
+
+- Target Time: 1h
+- Goal: Follow up from 04 & 05
+- Result: Pulled info via user data.
+
+
+## 05-FEB-2024
+
+- Target Time: 1h (35m)
+- Goal: Follow up from 04-FEB
+- Result: Partially got it working. Need to get ID from email, apparently, in order to filter? How do I pull the actual data? [oh, duh. You pull the ID directly from the user object 🤦‍♂️]
+
+### Journal
+
+- "owner" expects a number, but the type system is looking for something more complex. If I pass an email string in, the findMany breaks. Docs imply that should be okay(?). 
+- Also, how do I get the actual word out of the DB with FindMany?
+
+
 ## 04-FEB-2024
 
-- Target Time: 3h
+- Target Time: 3h ✅
 - Goal: Get a basic api in place that creates a complex record with a many-to-one relation of users to a word. There should user-specific parameters for that word. What is the condition for that to work? This may need to take the form of a specific API that does a lot of sever side loading rather that trying to finagle the details on the client side though numerous API calls. Rationale is to save the network call effort.
 - Test details:
   - Should be able to delete the user-specific parameters when deleting the entire user (but not the words).
@@ -35,7 +54,7 @@ For this exercise, I'm trying to figure out how to &mdash; given a preexisting l
 - enabled the debugger for Strap.
 - research into Koa in order to understand `ctx` better.
 - update [diagram](https://drive.google.com/file/d/17NgirP3uNDS9I5zEbsi9uJy_sCHzy5ku/view?usp=sharing) with some new class diagrams.
-- removing user-dictionary and focusing on simply associating user-words with the owner. "Override" `find` through using super.
+- removing user-dictionary and focusing on simply associating user-words with the owner. "Override" `find` through using `super`.
 
 #### Next time:
 

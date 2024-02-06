@@ -4,6 +4,8 @@ Notes that, hopefully, will keep me organized on how Strapi works, starting with
 
 ## Gotchas
 - You may find documentation to be out of date, especially in some of the blog posts. For example, [this](https://strapi.io/blog/strapi-internals-customizing-the-backend-part-1-models-controllers-and-routes) post refers to `ctx.request.params` which should actually be just `ctx.params`. 
+- When adding a "user" as a relation to an content type, note that there are two types: `users-permissions` and `admin`. Make sure you pick the correct one. 
+
 
 # Strapi in General
 
@@ -11,6 +13,7 @@ Strapi backend is based on Koa. An intro is [here](https://koajs.com/#introducti
 
 ## Useful (hopefully) links
 - [Strapi Internals Example](https://strapi.io/blog/strapi-internals-customizing-the-backend-part-1-models-controllers-and-routes)
+- [Strapi Filtering Blog Post](https://strapi.io/blog/demystifying-strapi-s-populate-and-filtering)
 
 ## Request path:
 

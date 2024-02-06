@@ -20,15 +20,16 @@
       ],
       "default": "visible"
     },
-    "word": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::word.word"
-    },
     "owner": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "admin::user"
+      "target": "plugin::users-permissions.user"
+    },
+    "word": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::word.word",
+      "inversedBy": "user_words"
     }
   }
 }
