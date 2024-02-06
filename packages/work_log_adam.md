@@ -4,7 +4,8 @@
 
 - Target Time: 1h
 - Goal: Follow up from 04 & 05
-- Result: Pulled info via user data.
+- Result: Pulled info via user data. Pull word data.
+- @TODO: Make sure that user-words can't duped for a user (which can happen code, but I'm wondering if there would be a good practice doing it at the CM level)
 
 
 ## 05-FEB-2024

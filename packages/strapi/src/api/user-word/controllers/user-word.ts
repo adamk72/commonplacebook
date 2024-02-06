@@ -11,7 +11,8 @@ export default factories.createCoreController('api::user-word.user-word', {
     strapi.log.info({ "message": `Find[all] with user: ${email}` })
 
     const ud = await strapi.entityService.findMany("api::user-word.user-word", {
-      filters: { owner: userId }
+      filters: { owner: userId },
+      populate: { word: true }
     })
 
     return { ud }
