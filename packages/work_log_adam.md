@@ -1,12 +1,17 @@
 # Dates
 
-## 05-FEB-2024
+## 07-FEB-2024
 
-- Target Time: 1h
+- Target Time: 1h ()
+- Goal: Elaborate on custom route so that it pulls real data (use to replace the test code in the core find controller.)
+- Result: 
+
+## 06-FEB-2024
+
+- Target Time: 1h (45m)
 - Goal: Follow up from 04 & 05
-- Result: Pulled info via user data. Pull word data.
+- Result: Pulled info via user data. Pull word data. Add custom route; got this working.
 - @TODO: Make sure that user-words can't duped for a user (which can happen code, but I'm wondering if there would be a good practice doing it at the CM level)
-
 
 ## 05-FEB-2024
 

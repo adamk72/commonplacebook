@@ -6,6 +6,10 @@ Notes that, hopefully, will keep me organized on how Strapi works, starting with
 - You may find documentation to be out of date, especially in some of the blog posts. For example, [this](https://strapi.io/blog/strapi-internals-customizing-the-backend-part-1-models-controllers-and-routes) post refers to `ctx.request.params` which should actually be just `ctx.params`. 
 - When adding a "user" as a relation to an content type, note that there are two types: `users-permissions` and `admin`. Make sure you pick the correct one. 
 
+## Interesting Tidbits
+
+- When you add a new route (the docs on this are pretty straight forward) into an existing API path, that will show up in the admin UI (under U&P Plugin -> Roles) as a sub-section of the initial API. So when I added "my-words" to the "user-word" API, it showed up under "user-word." This is how you can set the new route's permissions.
+
 
 # Strapi in General
 
